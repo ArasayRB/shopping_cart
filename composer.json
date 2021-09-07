@@ -1,0 +1,20 @@
+{
+    "require": {
+        "phroute/phroute": "^2.1",
+        "twbs/bootstrap": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/",
+            "config\\":"config/",
+            "core\\": "core/",
+            "library\\": "library/"
+        }
+    },
+    "authors": [
+        {
+            "name": "arbast",
+            "email": "ing.arasay@gmail.com"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+; <?php exit; ?>
+;Author and email of developer
+AUTHOR="Arasay Rodriguez Bastida | arbast"
+AUTHOR_EMAIL="ing.arasay@gmail.com"
+
+API_NAME="Products Cart"
+
+; Proyect Base URL
+BASE_URL = ""
+
+
+USER_MYSQL = ""
+PASS_MYSQL = ""
+NAME_BD_MYSQL = ""
+HOST_MYSQL = "localhost"
+
+
+OFFSET_ROUTE = 2
+
+
+; System Configuration
+PERMITIR_REGISTRO_USUARIOS = true

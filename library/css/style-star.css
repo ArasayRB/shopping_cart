@@ -1,0 +1,22 @@
+.clasification{
+position:relative;
+overflow:hidden;
+display:inline-block;
+}
+
+.clasification input{
+position:absolute;
+top:-100px;
+}
+
+.clasification label{
+float: right;
+color: #c1b8b8;
+font-size: 30px;
+}
+
+.clasification label:hover,
+.clasification label:hover ~ label,
+.clasification input:checked ~ label{
+color: #ffff00;
+}
