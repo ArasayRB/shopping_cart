@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 30-04-2020 a las 13:51:24
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.2
+-- Servidor: localhost
+-- Tiempo de generación: 07-09-2021 a las 20:12:59
+-- Versión del servidor: 10.4.20-MariaDB
+-- Versión de PHP: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -83,13 +82,6 @@ CREATE TABLE `product_cart` (
   `um` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `product_cart`
---
-
-INSERT INTO `product_cart` (`user_id`, `product_id`, `shop_id`, `cant`, `um`) VALUES
-('robe@rb.com', '6789054321567', '666666', 2, 'U');
-
 -- --------------------------------------------------------
 
 --
@@ -101,6 +93,50 @@ CREATE TABLE `product_clasification` (
   `product_id` varchar(13) NOT NULL,
   `clasification` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `product_clasification`
+--
+
+INSERT INTO `product_clasification` (`user_id`, `product_id`, `clasification`) VALUES
+('dani@d.com', '1234567890098', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `id` varchar(255) NOT NULL,
+  `information` text NOT NULL,
+  `last_access` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `information`, `last_access`) VALUES
+('msd4bsb5vocgfb553hpmi39876', 'Array', 1631038142);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sessions_user`
+--
+
+CREATE TABLE `sessions_user` (
+  `id_session` varchar(255) NOT NULL,
+  `id_user` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `sessions_user`
+--
+
+INSERT INTO `sessions_user` (`id_session`, `id_user`) VALUES
+('msd4bsb5vocgfb553hpmi39876', 'dani@d.com');
 
 -- --------------------------------------------------------
 
@@ -213,6 +249,20 @@ ALTER TABLE `product_clasification`
   ADD KEY `product_id` (`product_id`);
 
 --
+-- Indices de la tabla `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `sessions_user`
+--
+ALTER TABLE `sessions_user`
+  ADD PRIMARY KEY (`id_session`,`id_user`),
+  ADD UNIQUE KEY `id_session` (`id_session`),
+  ADD KEY `id_user` (`id_user`);
+
+--
 -- Indices de la tabla `shop`
 --
 ALTER TABLE `shop`
@@ -258,6 +308,13 @@ ALTER TABLE `product_cart`
 ALTER TABLE `product_clasification`
   ADD CONSTRAINT `product_clasification_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`email`),
   ADD CONSTRAINT `product_clasification_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`code`);
+
+--
+-- Filtros para la tabla `sessions_user`
+--
+ALTER TABLE `sessions_user`
+  ADD CONSTRAINT `sessions_user_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `sessions_user_ibfk_2` FOREIGN KEY (`id_session`) REFERENCES `sessions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `user`
