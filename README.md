@@ -11,9 +11,9 @@ Clona el proyecto desde esta dirección
 Clone this project since this address
 
 ### Configra archivo env / Configurate env file
-En la carpeta principal abre la carpeta /app y crea un archivo *.env*, copia y pega lo que hay *.env(copy)*, cambia las credenciales y sobre todo la URL_BASE que en mi caso es "http://localhost/carrito".
+En la carpeta principal abre la carpeta /app y crea un archivo *.env*, copia y pega lo que hay *.env.example*, cambia las credenciales y sobre todo la URL_BASE que en mi caso es "http://localhost/carrito".
 
-In principal folder open /app folder and create an file *.env*, copy and paste data ubicate in *.env(copy)*, change credentials and URL_BASE, in my case is "http://localhost/carrito".
+In principal folder open /app folder and create an file *.env*, copy and paste data ubicate in *.env.example*, change credentials and URL_BASE, in my case is "http://localhost/carrito".
 
 ### Esquema de Base de datos
 Ejecuta el script de la base de datos ubicada en /carrito/shopping_products(1).sql en la base de datos de tu preferencia, o impórtalo, visita la web y debería estar funcionando. Estas son las credenciales de prueba:
