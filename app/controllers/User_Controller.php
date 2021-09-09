@@ -1,20 +1,13 @@
 <?php
 namespace app\controllers;
 
-use app\models\{Product,User,Session,SessionUser};
 use app\Redirect;
-use config\{ServiceSession};
+use app\Validator;
 use app\controllers\{Product_Controller,UserPay_Controller,Session_Controller};
+use app\models\{Product,User,Session,SessionUser};
+use config\{ServiceSession};
 use core\{BaseController};
 
-//require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/carrito/autoloadCart.php');
-
-//call
-//\carrito\autoloadCart::init();
-/*ob_start();
-session_start();
-
-$error = ob_get_clean();*/
 	class User_Controller extends BaseController
 	{
 		public function __construct(){
@@ -63,6 +56,12 @@ $error = ob_get_clean();*/
 		*/
 
 	  public function login(){
+			Validator::validateOrRedirect($_POST,
+					[
+							"required" => ["txt-input", "password","action"],
+							"email" => "txt-input",
+					],
+					"/login");
 			$this->resetMessage();
 	    $username=$_POST["txt-input"];
 	    $password=$_POST["password"];
